@@ -57,13 +57,11 @@ class BackendFormMetaclass(SuperModelFormMetaclass, FloppyformsModelFormMetaclas
             mcs, name, bases, attrs)
 
 
-class BaseBackendForm(SuperModelForm, forms.ModelForm):
+class BaseBackendForm(SuperModelForm, forms.ModelForm, metaclass=BackendFormMetaclass):
     '''
     This is the base form that should be used by all backends. It
     handles the language of objects as expected.
     '''
-
-    __metaclass__ = BackendFormMetaclass
 
     class Meta:
         exclude = ()
